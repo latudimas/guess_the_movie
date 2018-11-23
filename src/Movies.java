@@ -37,9 +37,30 @@ public class Movies {
     }
 
     // Transform title into list of underscore
-    public String titleToUnderscore (String titleInput) {
+    public char[] titleHide (String titleInput) {
+//        String[] tempArray =new String[inputLength];
 
-        return null;
+        // convert string to array of characters
+        char[] titleChars = titleInput.toCharArray();
+        int inputLength = titleChars.length;
+
+        // checking trough characters array, check if it's letter or not
+        for (int i=0; i<inputLength; i++){
+            if(Character.isLetter(titleChars[i])){
+                titleChars[i] = '_';
+            }
+        }
+
+//        for (int i=0; i<inputLength; i++) {
+//
+//
+//            // char c = titleInput.charAt(i); //ambil karakter
+//            // if(Character.isLetter(c)) {} // check tiap karakter
+//            // jika ini huruf, ubah ke underscore symbol
+//            // jika bukan huruf, tetap, jangan diubah
+//
+//        }
+        return titleChars;
     }
 
     public static void main(String [] args){
@@ -49,11 +70,26 @@ public class Movies {
             myMovies.loadData();
             myMovies.pickRandomTitle(myMovies.titleList);
             System.out.print(myMovies.titleList);
-            System.out.print("\n" + myMovies.mMovieTitle);
+            System.out.print("\n" + myMovies.mMovieTitle + "\n" + myMovies.mMovieTitle.length());
         } catch (Exception e) {
             System.out.print("Data Not Found");
             e.printStackTrace();
         }
+
+        String str = "journal Dev";
+        char[] chars = str.toCharArray();
+        System.out.print("\nstring length: " + str.length());
+        System.out.print("char length: " + chars.length);
+
+        for(int i=0; i<chars.length; i++){
+            if(Character.isLetter(chars[i])){
+                chars[i] = '_';
+            }
+        }
+        System.out.print(chars);
+//        for (char c: chars) {
+//            System.out.print(c + "\n");
+//        }
 
     }
 }
