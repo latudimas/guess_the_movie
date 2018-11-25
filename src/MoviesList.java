@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class MoviesList {
     private ArrayList<String> movies;
-    private char[] movieTitle;
+//    private char[] movieTitle;
 
     // Default Constructor
     public MoviesList(String fileName) {
@@ -29,8 +29,16 @@ public class MoviesList {
         return titleString.toCharArray();
     }
 
-    public char[] maskingMovietitle() {
-        char[] originTitle = getMovieTitle();
-//        whil
+    public char[] maskingMovietitle(char[] movieTitle) {
+//        char[] movieTitle = getMovieTitle();
+        char[] temp = new char[movieTitle.length];
+        for(int i=0; i<movieTitle.length; i++){
+            if(Character.isLetter(movieTitle[i])){
+                temp[i] = '_';
+            } else{
+                temp[i] = ' ';
+            }
+        }
+        return temp;
     }
 }
