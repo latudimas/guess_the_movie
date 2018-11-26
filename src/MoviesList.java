@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class MoviesList {
     private ArrayList<String> movies;
-//    private char[] movieTitle;
 
     // Default Constructor
     public MoviesList(String fileName) {

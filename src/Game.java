@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -51,7 +52,7 @@ public class Game {
             }
         }
         // Check apakah sama
-        if(checkArray == maskedTitle){
+        if(Arrays.equals(checkArray, maskedTitle)){
             pointLost++;
         }
         getPointLost();
@@ -70,7 +71,7 @@ public class Game {
             return true;
         }
 
-        if (originalTitle == maskedTitle) {
+        if (Arrays.equals(originalTitle, maskedTitle)) {
             gameWon = true;
             return true;
         }
