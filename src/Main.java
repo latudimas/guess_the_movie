@@ -1,3 +1,6 @@
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Main {
     public static void main(String [] args){
         String fileName = "movies_title_file.txt";
@@ -11,9 +14,9 @@ public class Main {
         Game testGame = new Game(fileName);
 
         char[] original = testGame.getOriginalTitle();
-        System.out.print(original);
+        System.out.println(original);
         char[] masked = testGame.getMaskedTitle();
-        System.out.print( masked );
+        System.out.println(masked );
 
         char inputChar;
         char[] testChar = new char[original.length];
@@ -22,12 +25,20 @@ public class Main {
 //
 //        boolean result =  testGame.isCompleted();
 //        System.out.print(result);
-
-        while (testGame.gameEnded() == false){
+        int i = 0;
+        while (!testGame.gameEnded()){
 //            inputChar = testGame.scanInput();
+//            testGame.getPointLost();
             testChar = testGame.compare();
-            System.out.print(testChar);
+            System.out.println(testChar);
+            System.out.println("loop-"+i);
+            i++;
         }
+
+//        String str = "the good the bad and the ugly";
+//        boolean isContains = str.contains('t');
+//        System.out.println(isContains);
+
 
     }
 }

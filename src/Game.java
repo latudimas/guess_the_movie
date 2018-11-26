@@ -5,8 +5,8 @@ public class Game {
     private int pointLost;
 
     // Origin and Masked title field
-    private final char[] originalTitle;
-    private final char[] maskedTitle;
+    private char[] originalTitle;
+    private char[] maskedTitle;
 
     // Default Constructor
     public Game(String fileName) {
@@ -31,29 +31,38 @@ public class Game {
 
     // Compare input dengan original title (Perlu dibuat objek movieList nya)
     // public char[] compare(char[] originChar, char[] maskedChar, char userInput){
+    // TODO change how counting pointLost Mechanism,
     public char[] compare(){
+//    public  void compare() {
         // Looping through char array
         char userInput = scanInput();
         for(int i=0; i<originalTitle.length; i++){
             // Check if input char is in title char array
             if(userInput == originalTitle[i]){
                 maskedTitle[i] = userInput;
+//                System.out.println("point: " + pointLost);
             } else{
-                pointLost += 1;
+//                System.out.println("point: " + pointLost);
+//                pointLost ++;
             }
+            getPointLost();
         }
         return maskedTitle;
+//        System.out.println(maskedTitle);
     }
 
-    // Check untuk mengecek kondisi game, harus lanjut atau tidak
-    public void gameStatus() {
-        //check score
-        boolean finish = isCompleted();
-        if (pointLost == 10){
-            gameWon = false;
-        } else if (pointLost < 10 && finish) {
-            gameWon = true;
+
+    // Method for control game flow, is it end or not
+    public boolean gameEnded() {
+        if (pointLost >= 10){
+            return true;
         }
+
+        if (originalTitle == maskedTitle) {
+            gameWon = true;
+            return true;
+        }
+        return false;
     }
 
     // Getter Method untuk akses originalTitle dan maskedTitle
@@ -70,26 +79,7 @@ public class Game {
         return gameWon;
     }
 
-    // Method for control game flow, is it end or not
-    public boolean gameEnded() {
-        if (pointLost >= 10){
-            return true;
-        }
-
-        if (originalTitle == maskedTitle) {
-            gameWon = true;
-            return true;
-        }
-        return false;
+    public void getPointLost () {
+        System.out.println("Points Lost: " + pointLost);
     }
-
-    // Check if title was completed
-    public boolean isCompleted() {
-        if(originalTitle != maskedTitle){
-            return false;
-        } else {
-            return true;
-        }
-    }
-
 }
