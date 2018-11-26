@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -8,12 +9,16 @@ public class Game {
     private char[] originalTitle;
     private char[] maskedTitle;
 
+    // Helper field
+    private char[] checkArray;
+
     // Default Constructor
     public Game(String fileName) {
         // From MovieList Class
         MoviesList moviesList = new MoviesList(fileName);
         originalTitle = moviesList.getMovieTitle();
         maskedTitle = moviesList.maskingMovietitle(originalTitle);
+        checkArray = Arrays.copyOf(maskedTitle,maskedTitle.length);
 
         gameWon = false;
         pointLost = 0;
@@ -34,7 +39,6 @@ public class Game {
     // TODO change how counting pointLost Mechanism,
     public char[] compare(){
 //    public  void compare() {
-        // Looping through char array
         char userInput = scanInput();
         for(int i=0; i<originalTitle.length; i++){
             // Check if input char is in title char array
@@ -45,8 +49,16 @@ public class Game {
 //                System.out.println("point: " + pointLost);
 //                pointLost ++;
             }
-            getPointLost();
         }
+        // Check apakah sama
+        if(checkArray == maskedTitle){
+            pointLost++;
+        }
+        getPointLost();
+
+        //Update checkArray
+        checkArray = Arrays.copyOf(maskedTitle,maskedTitle.length);
+
         return maskedTitle;
 //        System.out.println(maskedTitle);
     }
